@@ -1,0 +1,1266 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     56455,       1258]
+NotebookOptionsPosition[     55878,       1240]
+NotebookOutlinePosition[     56272,       1256]
+CellTagsIndexPosition[     56229,       1253]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"myFactorial", "[", "n_Integer", "]"}], ":=", 
+   RowBox[{"n", "!"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"myFactorial", "[", "n_", "]"}], ":=", "Infinity"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"mnlfac", "[", 
+    RowBox[{"nn_", ",", "n_", ",", "a_List"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{"Product", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"nn", "+", 
+           RowBox[{"2", "*", "k"}]}], ")"}], "!"}], ")"}], "/", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"2", "^", 
+          RowBox[{"(", 
+           RowBox[{"2", "*", "k"}], ")"}]}], "*", 
+         RowBox[{"myFactorial", "[", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"nn", "+", 
+              RowBox[{"a", "[", 
+               RowBox[{"[", 
+                RowBox[{"k", "+", "1"}], "]"}], "]"}], "+", 
+              RowBox[{"2", "*", "n"}], "-", "1"}], ")"}], "/", "2"}], ")"}], 
+          "]"}], "*", 
+         RowBox[{"myFactorial", "[", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"nn", "-", 
+              RowBox[{"a", "[", 
+               RowBox[{"[", 
+                RowBox[{"k", "+", "1"}], "]"}], "]"}], "+", 
+              RowBox[{"2", "*", "n"}], "-", "1"}], ")"}], "/", "2"}], ")"}], 
+          "]"}]}], ")"}]}], ",", 
+      RowBox[{"{", 
+       RowBox[{"k", ",", "0", ",", 
+        RowBox[{"n", "-", "1"}]}], "}"}]}], "]"}], "*", 
+    RowBox[{"Product", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"a", "[", 
+         RowBox[{"[", "i", "]"}], "]"}], ")"}], "^", "2"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1", ",", "n"}], "}"}]}], "]"}], "*", 
+    RowBox[{"Product", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"a", "[", 
+            RowBox[{"[", "i", "]"}], "]"}], ")"}], "^", "2"}], "-", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"a", "[", 
+            RowBox[{"[", "j", "]"}], "]"}], ")"}], "^", "2"}]}], ")"}], "^", 
+       "2"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1", ",", "n"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"j", ",", 
+        RowBox[{"i", "+", "1"}], ",", "n"}], "}"}]}], "]"}], "*", 
+    RowBox[{"2", "^", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"n", "^", "2"}]}], "+", 
+       RowBox[{"2", "*", "n"}], "-", 
+       RowBox[{"n", "*", "nn"}]}], ")"}]}], "*", 
+    RowBox[{
+     RowBox[{"n", "!"}], "/", 
+     RowBox[{"(", 
+      RowBox[{"Product", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"2", "*", "i"}], ")"}], "!"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "1", ",", "n"}], "}"}]}], "]"}], ")"}]}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"findmax", "[", 
+    RowBox[{"n_", ",", "nn_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"a", "=", 
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"2", "*", 
+            RowBox[{"(", 
+             RowBox[{"n", "-", "i"}], ")"}]}], "+", "1", "+", 
+           RowBox[{"Mod", "[", 
+            RowBox[{"nn", ",", "2"}], "]"}]}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "n"}], "}"}]}], "]"}]}], ",", "i", ",", "oldval",
+        ",", "newval", ",", 
+       RowBox[{"cont", "=", "True"}]}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"While", "[", 
+       RowBox[{"cont", ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"cont", "=", "False"}], ";", "\[IndentingNewLine]", 
+         RowBox[{"For", "[", 
+          RowBox[{
+           RowBox[{"i", "=", "n"}], ",", 
+           RowBox[{"i", "\[GreaterEqual]", "1"}], ",", 
+           RowBox[{"i", "--"}], ",", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"oldval", "=", 
+             RowBox[{"mnlfac", "[", 
+              RowBox[{"nn", ",", "n", ",", "a"}], "]"}]}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"a", "[", 
+              RowBox[{"[", "i", "]"}], "]"}], "+=", "2"}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{"newval", "=", 
+             RowBox[{"mnlfac", "[", 
+              RowBox[{"nn", ",", "n", ",", "a"}], "]"}]}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{"While", "[", 
+             RowBox[{
+              RowBox[{"newval", ">", "oldval"}], ",", "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"cont", "=", "True"}], ";", "\[IndentingNewLine]", 
+               RowBox[{"oldval", "=", "newval"}], ";", "\[IndentingNewLine]", 
+               
+               RowBox[{
+                RowBox[{"a", "[", 
+                 RowBox[{"[", "i", "]"}], "]"}], "+=", "2"}], ";", 
+               "\[IndentingNewLine]", 
+               RowBox[{"newval", "=", 
+                RowBox[{"mnlfac", "[", 
+                 RowBox[{"nn", ",", "n", ",", "a"}], "]"}]}]}]}], "]"}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"a", "[", 
+              RowBox[{"[", "i", "]"}], "]"}], "-=", "2"}], ";"}]}], 
+          "\[IndentingNewLine]", "]"}]}]}], "\[IndentingNewLine]", "]"}], ";",
+       "\[IndentingNewLine]", "a"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"rhotheor", "[", 
+    RowBox[{"x_", ",", "c_"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"1", "-", 
+       RowBox[{"Sign", "[", 
+        RowBox[{
+         RowBox[{"Abs", "[", "x", "]"}], "-", 
+         RowBox[{"c", "/", "2"}]}], "]"}]}], ")"}], "/", "2"}], "*", 
+    RowBox[{"Re", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"1", "-", 
+         RowBox[{"Sign", "[", 
+          RowBox[{"c", "-", "4"}], "]"}]}], ")"}], "/", "4"}], "+", 
+      RowBox[{
+       RowBox[{"Sign", "[", 
+        RowBox[{"c", "-", "4"}], "]"}], "*", 
+       RowBox[{"1", "/", 
+        RowBox[{"(", 
+         RowBox[{"4", "*", "Pi"}], ")"}]}], "*", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"ArcTan", "[", 
+          FractionBox[
+           RowBox[{
+            RowBox[{"-", "8"}], "-", 
+            RowBox[{"c", " ", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"-", "4"}], "+", "x"}], ")"}]}]}], 
+           RowBox[{
+            SqrtBox[
+             SuperscriptBox[
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"-", "4"}], "+", "c"}], ")"}], "2"]], " ", 
+            SqrtBox[
+             RowBox[{
+              RowBox[{"-", "4"}], "+", 
+              RowBox[{"2", " ", "c"}], "-", 
+              SuperscriptBox["x", "2"]}]]}]], "]"}], "+", 
+         RowBox[{"ArcTan", "[", 
+          FractionBox[
+           RowBox[{
+            RowBox[{"-", "8"}], "+", 
+            RowBox[{"c", " ", 
+             RowBox[{"(", 
+              RowBox[{"4", "+", "x"}], ")"}]}]}], 
+           RowBox[{
+            SqrtBox[
+             SuperscriptBox[
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"-", "4"}], "+", "c"}], ")"}], "2"]], " ", 
+            SqrtBox[
+             RowBox[{
+              RowBox[{"-", "4"}], "+", 
+              RowBox[{"2", " ", "c"}], "-", 
+              SuperscriptBox["x", "2"]}]]}]], "]"}]}], ")"}]}]}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"rhotheor2", "[", 
+    RowBox[{"x_", ",", "c_"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"1", "-", 
+       RowBox[{"Sign", "[", 
+        RowBox[{
+         RowBox[{"Abs", "[", "x", "]"}], "-", 
+         RowBox[{"c", "/", "2"}]}], "]"}]}], ")"}], "/", "2"}], "*", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"1", "-", 
+         RowBox[{"Sign", "[", 
+          RowBox[{"c", "-", "4"}], "]"}]}], ")"}], "/", "4"}], "+", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", 
+         RowBox[{"Sign", "[", 
+          RowBox[{"c", "-", "4"}], "]"}]}], "/", 
+        RowBox[{"(", 
+         RowBox[{"4", "*", "Pi"}], ")"}]}], "*", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"Im", "[", 
+          RowBox[{
+           RowBox[{"Log", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"Sqrt", "[", 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"c", "-", "4"}], ")"}], "^", "2"}], "]"}], "*", 
+              RowBox[{"Sqrt", "[", 
+               RowBox[{
+                RowBox[{"x", "^", "2"}], "-", 
+                RowBox[{"2", "*", "c"}], "+", "4"}], "]"}]}], "-", 
+             RowBox[{"c", "*", 
+              RowBox[{"(", 
+               RowBox[{"x", "-", "4"}], ")"}]}], "-", "8"}], "]"}], "+", 
+           RowBox[{"Log", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"Sqrt", "[", 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"c", "-", "4"}], ")"}], "^", "2"}], "]"}], "*", 
+              RowBox[{"Sqrt", "[", 
+               RowBox[{
+                RowBox[{"x", "^", "2"}], "-", 
+                RowBox[{"2", "*", "c"}], "+", "4"}], "]"}]}], "+", 
+             RowBox[{"c", "*", 
+              RowBox[{"(", 
+               RowBox[{"x", "+", "4"}], ")"}]}], "-", "8"}], "]"}]}], "]"}], 
+         "-", "Pi"}], ")"}]}]}], ")"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ft", "[", 
+    RowBox[{"y_", ",", "c_"}], "]"}], ":=", 
+   RowBox[{"1", "+", 
+    RowBox[{"NIntegrate", "[", 
+     RowBox[{
+      RowBox[{"1", "-", 
+       RowBox[{"4", "*", 
+        RowBox[{"rhotheor", "[", 
+         RowBox[{"x", ",", "c"}], "]"}]}]}], ",", 
+      RowBox[{"{", 
+       RowBox[{"x", ",", "0", ",", "y"}], "}"}]}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"prepdata", "[", "bntab_", "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "n", "}"}], ",", 
+     RowBox[{
+      RowBox[{"n", "=", 
+       RowBox[{"Length", "[", "bntab", "]"}]}], ";", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"bntab", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], "-", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"2", "*", 
+            RowBox[{"(", 
+             RowBox[{"n", "-", "i"}], ")"}]}], "+", "1"}], ")"}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "n"}], "}"}]}], "]"}]}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"trtab", "[", "tab_", "]"}], ":=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"Length", "[", 
+      RowBox[{"Select", "[", 
+       RowBox[{"tab", ",", 
+        RowBox[{
+         RowBox[{"#", "\[GreaterEqual]", "i"}], "&"}]}], "]"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", 
+       RowBox[{"tab", "[", 
+        RowBox[{"[", "1", "]"}], "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"reccolumn", "[", 
+    RowBox[{"colnum_", ",", "n_", ",", "wd_", ",", 
+     RowBox[{"sc_", ":", "1"}]}], "]"}], ":=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"Rectangle", "[", 
+      RowBox[{
+       RowBox[{"sc", "*", 
+        RowBox[{"{", 
+         RowBox[{"colnum", ",", 
+          RowBox[{"i", "-", "1"}]}], "}"}]}], ",", 
+       RowBox[{"sc", "*", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"colnum", "+", "wd"}], ",", "i"}], "}"}]}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "n"}], "}"}]}], "]"}]}], ";", 
+  RowBox[{
+   RowBox[{"showbntableau", "[", 
+    RowBox[{"tab_", ",", 
+     RowBox[{"sc_", ":", "1"}], ",", 
+     RowBox[{"rot_", ":", "False"}], ",", 
+     RowBox[{"tran_", ":", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0"}], "}"}]}]}], "]"}], ":=", 
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{"tab", "\[Equal]", 
+      RowBox[{"{", "0", "}"}]}], ",", 
+     RowBox[{"Graphics", "[", 
+      RowBox[{
+       RowBox[{"Text", "[", 
+        RowBox[{"Style", "[", 
+         RowBox[{"\"\<\[EmptySet]\>\"", ",", 
+          RowBox[{"FontSize", "\[Rule]", "16"}]}], "]"}], "]"}], ",", 
+       RowBox[{"ImageSize", "\[Rule]", "16"}]}], "]"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", "tab1", "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"tab1", "=", 
+         RowBox[{"Append", "[", 
+          RowBox[{
+           RowBox[{"Table", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"tab", "[", 
+               RowBox[{"[", 
+                RowBox[{"-", "1"}], "]"}], "]"}], "+", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"tab", "[", 
+                  RowBox[{"[", "i", "]"}], "]"}], "-", 
+                 RowBox[{"tab", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"-", "1"}], "]"}], "]"}]}], ")"}], "/", "2"}]}], 
+             ",", 
+             RowBox[{"{", 
+              RowBox[{"i", ",", "1", ",", 
+               RowBox[{
+                RowBox[{"Length", "[", "tab", "]"}], "-", "1"}]}], "}"}]}], 
+            "]"}], ",", 
+           RowBox[{"tab", "[", 
+            RowBox[{"[", 
+             RowBox[{"-", "1"}], "]"}], "]"}]}], "]"}]}], ";", 
+        RowBox[{"Graphics", "[", 
+         RowBox[{"{", 
+          RowBox[{"White", ",", 
+           RowBox[{"EdgeForm", "[", "Thin", "]"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"Translate", "[", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"If", "[", 
+                RowBox[{"rot", ",", 
+                 RowBox[{"Rotate", "[", 
+                  RowBox[{"#", ",", 
+                   RowBox[{"Pi", "/", "4"}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{"0", ",", "0"}], "}"}]}], "]"}], ",", "#"}], 
+                "]"}], "&"}], "/@", "\[IndentingNewLine]", 
+              RowBox[{"Flatten", "[", "\[IndentingNewLine]", 
+               RowBox[{
+                RowBox[{"Table", "[", 
+                 RowBox[{
+                  RowBox[{"reccolumn", "[", 
+                   RowBox[{
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"i", "\[LessEqual]", 
+                    RowBox[{"tab1", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"-", "1"}], "]"}], "]"}]}], ",", 
+                    RowBox[{
+                    RowBox[{"i", "/", "2"}], "-", 
+                    RowBox[{"1", "/", "2"}]}], ",", 
+                    RowBox[{"i", "-", 
+                    RowBox[{
+                    RowBox[{"tab1", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"-", "1"}], "]"}], "]"}], "/", "2"}], "-", 
+                    "1"}]}], "]"}], ",", 
+                    RowBox[{
+                    RowBox[{"trtab", "[", "tab1", "]"}], "[", 
+                    RowBox[{"[", "i", "]"}], "]"}], ",", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"i", "\[LessEqual]", 
+                    RowBox[{"tab1", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"-", "1"}], "]"}], "]"}]}], ",", " ", 
+                    RowBox[{"1", "/", "2"}], ",", "1"}], "]"}], ",", "sc"}], 
+                   "]"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{"i", ",", 
+                    RowBox[{"Length", "[", 
+                    RowBox[{"trtab", "[", "tab1", "]"}], "]"}]}], "}"}]}], 
+                 "]"}], ",", "3"}], "]"}]}], ",", "\[IndentingNewLine]", 
+             "tran"}], "]"}]}], "\[IndentingNewLine]", "}"}], "]"}]}]}], 
+      "]"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"showDiagramAndLimitShape", "[", 
+    RowBox[{"n_", ",", "nn_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"data", ",", "cc"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"cc", "=", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"nn", "+", 
+          RowBox[{"2", "*", "n"}], "-", "1"}], ")"}], "/", "n"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"data", "=", 
+       RowBox[{"findmax", "[", 
+        RowBox[{"n", ",", "nn"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Show", "[", 
+       RowBox[{
+        RowBox[{"showbntableau", "[", 
+         RowBox[{
+          RowBox[{"prepdata", "[", "data", "]"}], ",", 
+          RowBox[{
+           RowBox[{"Sqrt", "[", "2", "]"}], "/", "n"}], ",", "True", ",", 
+          RowBox[{"{", 
+           RowBox[{"1", ",", "0"}], "}"}]}], "]"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Plot", "[", 
+         RowBox[{
+          RowBox[{"ft", "[", 
+           RowBox[{"x", ",", "cc"}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"x", ",", "0", ",", 
+            RowBox[{
+             RowBox[{"cc", "/", "2"}], "+", 
+             RowBox[{"1", "/", "2"}]}]}], "}"}]}], "]"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Plot", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"-", "x"}], "+", "1"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"x", ",", "0", ",", "1"}], "}"}], ",", 
+          RowBox[{"PlotStyle", "\[Rule]", "Gray"}]}], "]"}], ",", 
+        RowBox[{"Plot", "[", 
+         RowBox[{
+          RowBox[{"x", "-", "1"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"x", ",", "1", ",", 
+            RowBox[{"cc", "/", "2"}]}], "}"}], ",", 
+          RowBox[{"PlotStyle", "\[Rule]", "Gray"}]}], "]"}], ",", 
+        RowBox[{"AspectRatio", "\[Rule]", "1"}], ",", 
+        RowBox[{"PlotRange", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"0", ",", 
+             RowBox[{
+              RowBox[{"cc", "/", "2"}], "+", 
+              RowBox[{"1", "/", "2"}]}]}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", 
+             RowBox[{
+              RowBox[{"cc", "/", "2"}], "+", 
+              RowBox[{"1", "/", "2"}]}]}], "}"}]}], "}"}]}], ",", 
+        RowBox[{"Axes", "\[Rule]", "True"}]}], "]"}]}]}], "]"}]}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.814191896947855*^9, 3.81419194195258*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"6568ceed-b892-4c17-adc4-78bedbd32c8d"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"showDiagramAndLimitShape", "[", 
+  RowBox[{"10", ",", "24"}], "]"}]], "Input",
+ CellChangeTimes->{{3.814191991301572*^9, 3.814192031671751*^9}},
+ CellLabel->"In[16]:=",ExpressionUUID->"d08c03f2-71a4-45d9-a00c-d3d5aaa3a6c1"],
+
+Cell[BoxData[
+ GraphicsBox[{
+   {GrayLevel[1], EdgeForm[Thickness[Tiny]], 
+    GeometricTransformationBox[{
+      GeometricTransformationBox[
+       RectangleBox[{0, 0}, 
+        NCache[{Rational[1, 10] 2^Rational[-1, 2], Rational[1, 5] 
+          2^Rational[-1, 2]}, {0.07071067811865475, 0.1414213562373095}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{0, Rational[1, 5] 2^Rational[-1, 2]}, {
+         0, 0.1414213562373095}], 
+        NCache[{Rational[1, 10] 2^Rational[-1, 2], Rational[1, 5] 
+          2^Rational[1, 2]}, {0.07071067811865475, 
+         0.28284271247461906`}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{0, Rational[1, 5] 2^Rational[1, 2]}, {
+         0, 0.28284271247461906`}], 
+        NCache[{Rational[1, 10] 2^Rational[-1, 2], Rational[3, 5] 
+          2^Rational[-1, 2]}, {0.07071067811865475, 
+         0.42426406871192845`}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{0, Rational[3, 5] 2^Rational[-1, 2]}, {
+         0, 0.42426406871192845`}], 
+        NCache[{Rational[1, 10] 2^Rational[-1, 2], Rational[2, 5] 
+          2^Rational[1, 2]}, {0.07071067811865475, 0.5656854249492381}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{0, Rational[2, 5] 2^Rational[1, 2]}, {0, 0.5656854249492381}],
+         NCache[{Rational[1, 10] 2^Rational[-1, 2], 2^Rational[-1, 2]}, {
+         0.07071067811865475, 0.7071067811865475}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[NCache[{0, 2^Rational[-1, 2]}, {0, 0.7071067811865475}], 
+        NCache[{Rational[1, 10] 2^Rational[-1, 2], Rational[3, 5] 
+          2^Rational[1, 2]}, {0.07071067811865475, 0.848528137423857}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{0, Rational[3, 5] 2^Rational[1, 2]}, {0, 0.848528137423857}], 
+        NCache[{Rational[1, 10] 2^Rational[-1, 2], Rational[7, 5] 
+          2^Rational[-1, 2]}, {0.07071067811865475, 0.9899494936611664}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{0, Rational[7, 5] 2^Rational[-1, 2]}, {
+         0, 0.9899494936611664}], 
+        NCache[{Rational[1, 10] 2^Rational[-1, 2], Rational[4, 5] 
+          2^Rational[1, 2]}, {0.07071067811865475, 1.1313708498984762`}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{0, Rational[4, 5] 2^Rational[1, 2]}, {
+         0, 1.1313708498984762`}], 
+        NCache[{Rational[1, 10] 2^Rational[-1, 2], Rational[9, 5] 
+          2^Rational[-1, 2]}, {0.07071067811865475, 
+         1.2727922061357855`}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{0, Rational[9, 5] 2^Rational[-1, 2]}, {
+         0, 1.2727922061357855`}], 
+        NCache[{Rational[1, 10] 2^Rational[-1, 2], 2^Rational[1, 2]}, {
+         0.07071067811865475, 1.4142135623730951`}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[1, 10] 2^Rational[-1, 2], 0}, {
+         0.07071067811865475, 0}], 
+        NCache[{Rational[1, 5] 2^Rational[-1, 2], Rational[1, 5] 
+          2^Rational[-1, 2]}, {0.1414213562373095, 0.1414213562373095}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[1, 10] 2^Rational[-1, 2], Rational[1, 5] 
+          2^Rational[-1, 2]}, {0.07071067811865475, 0.1414213562373095}], 
+        NCache[{
+         Rational[1, 5] 2^Rational[-1, 2], Rational[1, 5] 2^Rational[1, 2]}, {
+         0.1414213562373095, 0.28284271247461906`}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[1, 10] 2^Rational[-1, 2], Rational[1, 5] 
+          2^Rational[1, 2]}, {0.07071067811865475, 0.28284271247461906`}], 
+        NCache[{Rational[1, 5] 2^Rational[-1, 2], Rational[3, 5] 
+          2^Rational[-1, 2]}, {0.1414213562373095, 
+         0.42426406871192845`}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[1, 10] 2^Rational[-1, 2], Rational[3, 5] 
+          2^Rational[-1, 2]}, {0.07071067811865475, 0.42426406871192845`}], 
+        NCache[{Rational[1, 5] 2^Rational[-1, 2], Rational[2, 5] 
+          2^Rational[1, 2]}, {0.1414213562373095, 0.5656854249492381}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[1, 10] 2^Rational[-1, 2], Rational[2, 5] 
+          2^Rational[1, 2]}, {0.07071067811865475, 0.5656854249492381}], 
+        NCache[{Rational[1, 5] 2^Rational[-1, 2], 2^Rational[-1, 2]}, {
+         0.1414213562373095, 0.7071067811865475}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[1, 10] 2^Rational[-1, 2], 2^Rational[-1, 2]}, {
+         0.07071067811865475, 0.7071067811865475}], 
+        NCache[{Rational[1, 5] 2^Rational[-1, 2], Rational[3, 5] 
+          2^Rational[1, 2]}, {0.1414213562373095, 0.848528137423857}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[1, 10] 2^Rational[-1, 2], Rational[3, 5] 
+          2^Rational[1, 2]}, {0.07071067811865475, 0.848528137423857}], 
+        NCache[{
+         Rational[1, 5] 2^Rational[-1, 2], Rational[7, 5] 
+          2^Rational[-1, 2]}, {0.1414213562373095, 0.9899494936611664}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[1, 10] 2^Rational[-1, 2], Rational[7, 5] 
+          2^Rational[-1, 2]}, {0.07071067811865475, 0.9899494936611664}], 
+        NCache[{Rational[1, 5] 2^Rational[-1, 2], Rational[4, 5] 
+          2^Rational[1, 2]}, {0.1414213562373095, 1.1313708498984762`}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[1, 10] 2^Rational[-1, 2], Rational[4, 5] 
+          2^Rational[1, 2]}, {0.07071067811865475, 1.1313708498984762`}], 
+        NCache[{Rational[1, 5] 2^Rational[-1, 2], Rational[9, 5] 
+          2^Rational[-1, 2]}, {0.1414213562373095, 1.2727922061357855`}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[1, 10] 2^Rational[-1, 2], Rational[9, 5] 
+          2^Rational[-1, 2]}, {0.07071067811865475, 1.2727922061357855`}], 
+        NCache[{Rational[1, 5] 2^Rational[-1, 2], 2^Rational[1, 2]}, {
+         0.1414213562373095, 1.4142135623730951`}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[1, 5] 2^Rational[-1, 2], 0}, {
+         0.1414213562373095, 0}], 
+        NCache[{Rational[1, 5] 2^Rational[1, 2], Rational[1, 5] 
+          2^Rational[-1, 2]}, {0.28284271247461906`, 
+         0.1414213562373095}]], {{{0.7071067811865475, -0.7071067811865475}, {
+        0.7071067811865475, 0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[1, 5] 2^Rational[-1, 2], Rational[1, 5] 
+          2^Rational[-1, 2]}, {0.1414213562373095, 0.1414213562373095}], 
+        NCache[{Rational[1, 5] 2^Rational[1, 2], Rational[1, 5] 
+          2^Rational[1, 2]}, {0.28284271247461906`, 
+         0.28284271247461906`}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[1, 5] 2^Rational[-1, 2], Rational[1, 5] 
+          2^Rational[1, 2]}, {0.1414213562373095, 0.28284271247461906`}], 
+        NCache[{Rational[1, 5] 2^Rational[1, 2], Rational[3, 5] 
+          2^Rational[-1, 2]}, {0.28284271247461906`, 
+         0.42426406871192845`}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[1, 5] 2^Rational[-1, 2], Rational[3, 5] 
+          2^Rational[-1, 2]}, {0.1414213562373095, 0.42426406871192845`}], 
+        NCache[{Rational[1, 5] 2^Rational[1, 2], Rational[2, 5] 
+          2^Rational[1, 2]}, {0.28284271247461906`, 0.5656854249492381}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[1, 5] 2^Rational[-1, 2], Rational[2, 5] 
+          2^Rational[1, 2]}, {0.1414213562373095, 0.5656854249492381}], 
+        NCache[{Rational[1, 5] 2^Rational[1, 2], 2^Rational[-1, 2]}, {
+         0.28284271247461906`, 0.7071067811865475}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[1, 5] 2^Rational[-1, 2], 2^Rational[-1, 2]}, {
+         0.1414213562373095, 0.7071067811865475}], 
+        NCache[{Rational[1, 5] 2^Rational[1, 2], Rational[3, 5] 
+          2^Rational[1, 2]}, {0.28284271247461906`, 0.848528137423857}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[1, 5] 2^Rational[-1, 2], Rational[3, 5] 
+          2^Rational[1, 2]}, {0.1414213562373095, 0.848528137423857}], 
+        NCache[{Rational[1, 5] 2^Rational[1, 2], Rational[7, 5] 
+          2^Rational[-1, 2]}, {0.28284271247461906`, 
+         0.9899494936611664}]], {{{0.7071067811865475, -0.7071067811865475}, {
+        0.7071067811865475, 0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[1, 5] 2^Rational[-1, 2], Rational[7, 5] 
+          2^Rational[-1, 2]}, {0.1414213562373095, 0.9899494936611664}], 
+        NCache[{Rational[1, 5] 2^Rational[1, 2], Rational[4, 5] 
+          2^Rational[1, 2]}, {0.28284271247461906`, 
+         1.1313708498984762`}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[1, 5] 2^Rational[-1, 2], Rational[4, 5] 
+          2^Rational[1, 2]}, {0.1414213562373095, 1.1313708498984762`}], 
+        NCache[{Rational[1, 5] 2^Rational[1, 2], Rational[9, 5] 
+          2^Rational[-1, 2]}, {0.28284271247461906`, 
+         1.2727922061357855`}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[1, 5] 2^Rational[1, 2], 0}, {
+         0.28284271247461906`, 0}], 
+        NCache[{Rational[3, 5] 2^Rational[-1, 2], Rational[1, 5] 
+          2^Rational[-1, 2]}, {0.42426406871192845`, 
+         0.1414213562373095}]], {{{0.7071067811865475, -0.7071067811865475}, {
+        0.7071067811865475, 0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[1, 5] 2^Rational[1, 2], Rational[1, 5] 
+          2^Rational[-1, 2]}, {0.28284271247461906`, 0.1414213562373095}], 
+        NCache[{Rational[3, 5] 2^Rational[-1, 2], Rational[1, 5] 
+          2^Rational[1, 2]}, {0.42426406871192845`, 
+         0.28284271247461906`}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[1, 5] 2^Rational[1, 2], Rational[1, 5] 
+          2^Rational[1, 2]}, {0.28284271247461906`, 0.28284271247461906`}], 
+        NCache[{Rational[3, 5] 2^Rational[-1, 2], Rational[3, 5] 
+          2^Rational[-1, 2]}, {0.42426406871192845`, 
+         0.42426406871192845`}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[1, 5] 2^Rational[1, 2], Rational[3, 5] 
+          2^Rational[-1, 2]}, {0.28284271247461906`, 0.42426406871192845`}], 
+        NCache[{Rational[3, 5] 2^Rational[-1, 2], Rational[2, 5] 
+          2^Rational[1, 2]}, {0.42426406871192845`, 0.5656854249492381}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[1, 5] 2^Rational[1, 2], Rational[2, 5] 
+          2^Rational[1, 2]}, {0.28284271247461906`, 0.5656854249492381}], 
+        NCache[{Rational[3, 5] 2^Rational[-1, 2], 2^Rational[-1, 2]}, {
+         0.42426406871192845`, 0.7071067811865475}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[1, 5] 2^Rational[1, 2], 2^Rational[-1, 2]}, {
+         0.28284271247461906`, 0.7071067811865475}], 
+        NCache[{Rational[3, 5] 2^Rational[-1, 2], Rational[3, 5] 
+          2^Rational[1, 2]}, {0.42426406871192845`, 0.848528137423857}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[1, 5] 2^Rational[1, 2], Rational[3, 5] 
+          2^Rational[1, 2]}, {0.28284271247461906`, 0.848528137423857}], 
+        NCache[{Rational[3, 5] 2^Rational[-1, 2], Rational[7, 5] 
+          2^Rational[-1, 2]}, {0.42426406871192845`, 
+         0.9899494936611664}]], {{{0.7071067811865475, -0.7071067811865475}, {
+        0.7071067811865475, 0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[1, 5] 2^Rational[1, 2], Rational[7, 5] 
+          2^Rational[-1, 2]}, {0.28284271247461906`, 0.9899494936611664}], 
+        NCache[{Rational[3, 5] 2^Rational[-1, 2], Rational[4, 5] 
+          2^Rational[1, 2]}, {0.42426406871192845`, 
+         1.1313708498984762`}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[3, 5] 2^Rational[-1, 2], 0}, {
+         0.42426406871192845`, 0}], 
+        NCache[{Rational[2, 5] 2^Rational[1, 2], Rational[1, 5] 
+          2^Rational[-1, 2]}, {0.5656854249492381, 0.1414213562373095}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[3, 5] 2^Rational[-1, 2], Rational[1, 5] 
+          2^Rational[-1, 2]}, {0.42426406871192845`, 0.1414213562373095}], 
+        NCache[{Rational[2, 5] 2^Rational[1, 2], Rational[1, 5] 
+          2^Rational[1, 2]}, {0.5656854249492381, 0.28284271247461906`}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[3, 5] 2^Rational[-1, 2], Rational[1, 5] 
+          2^Rational[1, 2]}, {0.42426406871192845`, 0.28284271247461906`}], 
+        NCache[{Rational[2, 5] 2^Rational[1, 2], Rational[3, 5] 
+          2^Rational[-1, 2]}, {0.5656854249492381, 
+         0.42426406871192845`}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[3, 5] 2^Rational[-1, 2], Rational[3, 5] 
+          2^Rational[-1, 2]}, {0.42426406871192845`, 0.42426406871192845`}], 
+        NCache[{Rational[2, 5] 2^Rational[1, 2], Rational[2, 5] 
+          2^Rational[1, 2]}, {0.5656854249492381, 0.5656854249492381}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[3, 5] 2^Rational[-1, 2], Rational[2, 5] 
+          2^Rational[1, 2]}, {0.42426406871192845`, 0.5656854249492381}], 
+        NCache[{Rational[2, 5] 2^Rational[1, 2], 2^Rational[-1, 2]}, {
+         0.5656854249492381, 0.7071067811865475}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[3, 5] 2^Rational[-1, 2], 2^Rational[-1, 2]}, {
+         0.42426406871192845`, 0.7071067811865475}], 
+        NCache[{Rational[2, 5] 2^Rational[1, 2], Rational[3, 5] 
+          2^Rational[1, 2]}, {0.5656854249492381, 0.848528137423857}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[3, 5] 2^Rational[-1, 2], Rational[3, 5] 
+          2^Rational[1, 2]}, {0.42426406871192845`, 0.848528137423857}], 
+        NCache[{Rational[2, 5] 2^Rational[1, 2], Rational[7, 5] 
+          2^Rational[-1, 2]}, {0.5656854249492381, 0.9899494936611664}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[2, 5] 2^Rational[1, 2], 0}, {0.5656854249492381, 0}],
+         NCache[{2^Rational[-1, 2], Rational[1, 5] 2^Rational[-1, 2]}, {
+         0.7071067811865475, 0.1414213562373095}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[2, 5] 2^Rational[1, 2], Rational[1, 5] 
+          2^Rational[-1, 2]}, {0.5656854249492381, 0.1414213562373095}], 
+        NCache[{2^Rational[-1, 2], Rational[1, 5] 2^Rational[1, 2]}, {
+         0.7071067811865475, 0.28284271247461906`}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[2, 5] 2^Rational[1, 2], Rational[1, 5] 
+          2^Rational[1, 2]}, {0.5656854249492381, 0.28284271247461906`}], 
+        NCache[{2^Rational[-1, 2], Rational[3, 5] 2^Rational[-1, 2]}, {
+         0.7071067811865475, 0.42426406871192845`}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[2, 5] 2^Rational[1, 2], Rational[3, 5] 
+          2^Rational[-1, 2]}, {0.5656854249492381, 0.42426406871192845`}], 
+        NCache[{2^Rational[-1, 2], Rational[2, 5] 2^Rational[1, 2]}, {
+         0.7071067811865475, 0.5656854249492381}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[2, 5] 2^Rational[1, 2], Rational[2, 5] 
+          2^Rational[1, 2]}, {0.5656854249492381, 0.5656854249492381}], 
+        NCache[{2^Rational[-1, 2], 2^Rational[-1, 2]}, {0.7071067811865475, 
+         0.7071067811865475}]], {{{0.7071067811865475, -0.7071067811865475}, {
+        0.7071067811865475, 0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[2, 5] 2^Rational[1, 2], 2^Rational[-1, 2]}, {
+         0.5656854249492381, 0.7071067811865475}], 
+        NCache[{2^Rational[-1, 2], Rational[3, 5] 2^Rational[1, 2]}, {
+         0.7071067811865475, 0.848528137423857}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[NCache[{2^Rational[-1, 2], 0}, {0.7071067811865475, 0}], 
+        NCache[{Rational[3, 5] 2^Rational[1, 2], Rational[1, 5] 
+          2^Rational[-1, 2]}, {0.848528137423857, 0.1414213562373095}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{2^Rational[-1, 2], Rational[1, 5] 2^Rational[-1, 2]}, {
+         0.7071067811865475, 0.1414213562373095}], 
+        NCache[{Rational[3, 5] 2^Rational[1, 2], Rational[1, 5] 
+          2^Rational[1, 2]}, {0.848528137423857, 0.28284271247461906`}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{2^Rational[-1, 2], Rational[1, 5] 2^Rational[1, 2]}, {
+         0.7071067811865475, 0.28284271247461906`}], 
+        NCache[{Rational[3, 5] 2^Rational[1, 2], Rational[3, 5] 
+          2^Rational[-1, 2]}, {0.848528137423857, 0.42426406871192845`}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{2^Rational[-1, 2], Rational[3, 5] 2^Rational[-1, 2]}, {
+         0.7071067811865475, 0.42426406871192845`}], 
+        NCache[{Rational[3, 5] 2^Rational[1, 2], Rational[2, 5] 
+          2^Rational[1, 2]}, {0.848528137423857, 0.5656854249492381}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{2^Rational[-1, 2], Rational[2, 5] 2^Rational[1, 2]}, {
+         0.7071067811865475, 0.5656854249492381}], 
+        NCache[{Rational[3, 5] 2^Rational[1, 2], 2^Rational[-1, 2]}, {
+         0.848528137423857, 0.7071067811865475}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[3, 5] 2^Rational[1, 2], 0}, {0.848528137423857, 0}], 
+        NCache[{Rational[7, 5] 2^Rational[-1, 2], Rational[1, 5] 
+          2^Rational[-1, 2]}, {0.9899494936611664, 0.1414213562373095}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[3, 5] 2^Rational[1, 2], Rational[1, 5] 
+          2^Rational[-1, 2]}, {0.848528137423857, 0.1414213562373095}], 
+        NCache[{Rational[7, 5] 2^Rational[-1, 2], Rational[1, 5] 
+          2^Rational[1, 2]}, {0.9899494936611664, 0.28284271247461906`}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[3, 5] 2^Rational[1, 2], Rational[1, 5] 
+          2^Rational[1, 2]}, {0.848528137423857, 0.28284271247461906`}], 
+        NCache[{Rational[7, 5] 2^Rational[-1, 2], Rational[3, 5] 
+          2^Rational[-1, 2]}, {0.9899494936611664, 
+         0.42426406871192845`}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[3, 5] 2^Rational[1, 2], Rational[3, 5] 
+          2^Rational[-1, 2]}, {0.848528137423857, 0.42426406871192845`}], 
+        NCache[{Rational[7, 5] 2^Rational[-1, 2], Rational[2, 5] 
+          2^Rational[1, 2]}, {0.9899494936611664, 0.5656854249492381}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[7, 5] 2^Rational[-1, 2], 0}, {
+         0.9899494936611664, 0}], 
+        NCache[{Rational[4, 5] 2^Rational[1, 2], Rational[1, 5] 
+          2^Rational[-1, 2]}, {1.1313708498984762`, 0.1414213562373095}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[7, 5] 2^Rational[-1, 2], Rational[1, 5] 
+          2^Rational[-1, 2]}, {0.9899494936611664, 0.1414213562373095}], 
+        NCache[{Rational[4, 5] 2^Rational[1, 2], Rational[1, 5] 
+          2^Rational[1, 2]}, {1.1313708498984762`, 
+         0.28284271247461906`}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[7, 5] 2^Rational[-1, 2], Rational[1, 5] 
+          2^Rational[1, 2]}, {0.9899494936611664, 0.28284271247461906`}], 
+        NCache[{Rational[4, 5] 2^Rational[1, 2], Rational[3, 5] 
+          2^Rational[-1, 2]}, {1.1313708498984762`, 
+         0.42426406871192845`}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[7, 5] 2^Rational[-1, 2], Rational[3, 5] 
+          2^Rational[-1, 2]}, {0.9899494936611664, 0.42426406871192845`}], 
+        NCache[{Rational[4, 5] 2^Rational[1, 2], Rational[2, 5] 
+          2^Rational[1, 2]}, {1.1313708498984762`, 0.5656854249492381}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[4, 5] 2^Rational[1, 2], 0}, {
+         1.1313708498984762`, 0}], 
+        NCache[{Rational[9, 5] 2^Rational[-1, 2], Rational[1, 5] 
+          2^Rational[-1, 2]}, {1.2727922061357855`, 0.1414213562373095}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[4, 5] 2^Rational[1, 2], Rational[1, 5] 
+          2^Rational[-1, 2]}, {1.1313708498984762`, 0.1414213562373095}], 
+        NCache[{Rational[9, 5] 2^Rational[-1, 2], Rational[1, 5] 
+          2^Rational[1, 2]}, {1.2727922061357855`, 
+         0.28284271247461906`}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[4, 5] 2^Rational[1, 2], Rational[1, 5] 
+          2^Rational[1, 2]}, {1.1313708498984762`, 0.28284271247461906`}], 
+        NCache[{Rational[9, 5] 2^Rational[-1, 2], Rational[3, 5] 
+          2^Rational[-1, 2]}, {1.2727922061357855`, 
+         0.42426406871192845`}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[9, 5] 2^Rational[-1, 2], 0}, {
+         1.2727922061357855`, 0}], 
+        NCache[{2^Rational[1, 2], Rational[1, 5] 2^Rational[-1, 2]}, {
+         1.4142135623730951`, 0.1414213562373095}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[
+        NCache[{Rational[9, 5] 2^Rational[-1, 2], Rational[1, 5] 
+          2^Rational[-1, 2]}, {1.2727922061357855`, 0.1414213562373095}], 
+        NCache[{2^Rational[1, 2], Rational[1, 5] 2^Rational[1, 2]}, {
+         1.4142135623730951`, 0.28284271247461906`}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}], 
+      GeometricTransformationBox[
+       RectangleBox[NCache[{2^Rational[1, 2], 0}, {1.4142135623730951`, 0}], 
+        NCache[{Rational[11, 5] 2^Rational[-1, 2], Rational[1, 5] 
+          2^Rational[-1, 2]}, {1.5556349186104046`, 0.1414213562373095}]], {{{
+        0.7071067811865475, -0.7071067811865475}, {0.7071067811865475, 
+        0.7071067811865475}}, {0, 0}}]}, {1, 0}]}, {{{}, {}, 
+     TagBox[
+      {RGBColor[0.368417, 0.506779, 0.709798], AbsoluteThickness[1.6], 
+       Opacity[1.], LineBox[CompressedData["
+1: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
+y05hP/sL47JO/uavb2fg/0hsXU0=
+        "]]},
+      Annotation[#, "Charting`Private`Tag$27081#1"]& ]}, {}}, {{{}, {}, 
+     TagBox[
+      {GrayLevel[0.5], AbsoluteThickness[1.6], Opacity[1.], 
+       LineBox[CompressedData["
+1:eJw1lGs0lAkYxwfTydISbZhK0iqSSoii9i/aFLqQVu0qkqKpRKHaU5OxJrqI
+NumCmlxaccxoXY4yZZY52uZMkUtD6R2mMcbM8OasabCVffuwH57znN/5P//z
+fPvZRx8LPWBIo9G2UPN1Bx5QvRIO7fzhhp2pbmqKBN1/ToKM4YH6TxaiM59J
+uN+9WVDN2IDuHptrE5Mkgl5I/yxkhIGRu3jlPzoS4TH6J78zYlBg7HdUqSHx
+bkWGfxYjCdzRUwMSKQnu7G3nLzLSUd6s7LrFJ8E2rna8wMiFILapzj2SxK7d
+9/gfRkvAVE/T9VWNwHSKHREwnw/zPq+Lc81GsChkRNV8qQZvV8nTMuKHcfLl
+Gtwce4SVLTbjR/7SwrrGgjAwaMTZ5+tEMjst6uT+kta1TQidTs6QJGjQxCyc
+u1srwvZSm0dDIjV0i9eZVx59Bv86V0GugxqGExUz5y4SQ2jQ5fMoZQieU1F1
+O3gSuAljLQ93qiBJ93jZ4tyKF8Tx4K2rVLDL0Uw8GGnDBy8To4rMQWj0MqLL
+tR0m9JyZ1weVKFE3iM2udIBnUnR7fLUSZrZ/kApFJ04numRmZQ3g8qHag1yH
+1/AOKpXwhxX46FuhiDsnBSeyPCvIV4EkN1GNVXM3WpSFpUl33kPGE116Zf8G
+OWW23takHP8yO/OX/PoWaeLZbho/OZaun/7lYEMvmJGfUoOL+hFQZB/70JpA
+7/JjwY5jfThpG7mwP0KGDYlt8dkhfXDR7jSVbulDmWPYUEiMDLPMPxiLJvvw
+pt9u5KQJAXpjPv/7gn6Ms//m1j/rxWGPhp5vguRwvnEhWHvoLSo2R3OffpSj
+/IhPY5rlG+g0c2Yq897Dykksc2/vRu2OAKPcDQrk7UqckKZIcW4T526NUgHD
+Yzphnttr2L8L7C7mDODpj8xt9WOd8PZKz2W4KXH5qv61JL8DEfNbJww6lNjU
+vG/Gp93t0Imz5AnsQVgxFd7zP7fhJn1vUqiDCtzhjOV18a2YRdQWGYpUqMlw
+StaREkw7yw5bkzgErelk5RwfMWgP9vLllmrQIjh+yTXPcPw2P8uySY3Veeuf
+1+pFeLI009giXoMZIbJ3DQFNsAg87pJmpsUp/tGCkUuN6F3W1nFaoMWCq6x9
+K+c9RtUdOCj2DiPVxIggjGuxh+9pYftlGDacwBRr8yqkcu6xe8tHQCsbHPAK
+LUWlyjbfLJhElNqvwIWVh8xCThSxlQRtWzDp7pCHmNDhRbwQEqnVO/18xNcx
+TyCo2hJO8Zk41War67iY/UvL5WgSQrMrHrG8a4jzvDVqcprqu/dI7hE5WJj+
+3abp96l7PTG5jHUeX1af+VZaRrFwlLtWzEHP8Pv2+xVU/wI9IMiKg5zw6j0b
+H1L9ec7X4ni/Yco59ARHQMLXN3lpMZGK3lfZd4w6qNzSut6VlYL68/r9HV0U
+l6ylb7VKRq5P5JLiboo9o7cf5p1AUOnyGj+C+vdzpaqUSMDjUy+es4eofGOG
+myfrIPKWrcoO0VLMbBcn8PYjUV4QZk9SnG27v4KIglPwEZlwjOKqWMf1rJ9A
+N+gsydFTPP45vI7Yjr5aH2YU5R1aqpNFOGsjBMziFa6Ul2gLyhVpLE/87y1K
+Ze1fPfYfknBtcA==
+        "]]},
+      Annotation[#, "Charting`Private`Tag$33666#1"]& ]}, {}}, {{{}, {}, 
+     TagBox[
+      {GrayLevel[0.5], AbsoluteThickness[1.6], Opacity[1.], 
+       LineBox[CompressedData["
+1:eJwdyXk41HkABvDfzyaKsrQkMkqWTJMdVGos77dChJR0qJFb6XmQcgw6KDlC
+W9vFozWyJdslum1CWNZORfUo60iEHGnmZ1zj2mn/eJ/3/TzvYt9QtwAFiqJc
+5PnWDS+cZ1KUGPK509LCw6ZjrVpzGC03lyUt07OE+EF9YYeC3HEF6af1NkAl
+e7tntaLcHMGuCL0dICHe90+rfPuby/bp7cWNueG+evPl/n9E4ahr1jOeqdyl
+11289JJgXN8TGcEXo8wxvNhT7xIuTx9vLCwTI27Qi2ullY8KwZMKR5YE3LRL
+Vpc/FSI4accdlRgJ6iIFncU5j2BVLjl1vkWCu/MWFjg0luCpnclXAY9B2/KN
+0dVvyuEzxLczFDJQvtnNNhirRApvNGuMHoTD2/IPIrUa+NVyY9h7BqG9NbF+
+q6QWPicDNho8H4TyMs5WDfWX0Ei1zI3Ql8KB05rccKQO9kZhMiZGCu3Myp5/
++uqR3Z9na9kqhaAoS6NF8Ab5k9Fa73hDyBnu9uD3vUXDGsd/rYVD2NltGDRy
+uAFJKnHZL+lhLDSlYnhK79Fn7N5b7DmMW8LNf/RFNuJQqOHSkPJhiErO5jxW
+bMJt+tcvh1kjuD/T4eFgdDNUSsevup0YAWdi4NzGOa3oV3/Bd+sawd0NKw45
+Zn5AXIHV5dvrRkF5Ra3efbINqwV5L17ljeKA2DlL6PIRual3El1mjMF2vuec
+LOV2/LKCRYa8xsAK+jmut7QdOcqn+vwqxkDUf3hXndgBf+NzLNNFMtRsMrLm
+k09wDstYX5ogQ0Y7N+norE482qwYFNMtQ8iV2a+lLzvxNkZN6+z6ceQPsTgG
+SV3QrNN8EHJ9HOycZftbNnVj1oEnTddnTECj7eAj11mfEXetUkHFewKUU4qi
+Vtln6M4U6a6smMAq1QzL/Yk92Fd44Gmx/iTqfD8KItCLxiR1V6WESRSpLcme
+q9yHyXzXoIKPk5BtEb7eU9GHq15DJ+Ktp+BQ2qv0XWw/QtdeOqNzZQqtx00X
+r1z3Bf3BDYZqU1N433TLkTXxBelV6jdrfaehk7pk+4WqARQW3Te7WzUN34Ag
+P+/Ur7CNkAlHv6dIcq8UksViPM/TzplYR5EEFzMydlKMzCOK/nfCKGI+PruG
+3yGGmb7R0gghRXxtnDf32kjAb7AN0K+nyONbKbU2uRK0mZsHRk1TpCzAXzQw
+JYH9bx7b7CmapPHu3UijGNxUirfVpGmyXU0hha3AILL5lcE9BZr0PxbaBSoy
+mJMY/GFAkSY6qk3PWlQY8Brzdwaq0iS8aEuhSJvB+WP6TtsW0GTptM3FG+YM
+ZD32PEMdmkjfpIc7rGDg5R5iMij3s/xmt66VDNgmJUpnF9LE3S1GzWANg/LX
+uypF+jQ5fu1BciYYDPx40drWiCbNTpzYZGcG7mdKOPOMaZK/KNbDaBODJ7JP
+uu1yHxz627LSlUHCKwvZMROaKAv3SqfdGOhG1z/8k0OTVUxucJQHg7iO0Wun
+ltOEqpY4ae5m0OWy6IKHKU1EWYR9j8+gyCD00MhPNPG3a+0a8GKgnX7R9y8u
+Tbg6y6vSfBgcGSnZcsGMJrKB2N/ZfgzafTqJvzlNKitq42v8GTiIVLkWFjQ5
+k7HAOzCQwX/BO0QM
+        "]]},
+      Annotation[#, "Charting`Private`Tag$33708#1"]& ]}, {}}},
+  AspectRatio->1,
+  Axes->True,
+  PlotRange->NCache[{{0, 
+      Rational[53, 20]}, {0, 
+      Rational[53, 20]}}, {{0, 2.65}, {0, 2.65}}]]], "Output",
+ CellChangeTimes->{{3.8141919976487722`*^9, 3.8141920342562943`*^9}},
+ CellLabel->"Out[16]=",ExpressionUUID->"dd3a672a-a69c-4b63-85b5-7f4d5c0519c3"]
+}, Open  ]]
+},
+WindowSize->{1123.2, 625.8},
+WindowMargins->{{0, Automatic}, {0, Automatic}},
+FrontEndVersion->"12.1 for Linux x86 (64-bit) (March 18, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"c33cdcea-78d0-462c-9d47-0c00987ef17d"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 18474, 528, 1132, "Input",ExpressionUUID->"6568ceed-b892-4c17-adc4-78bedbd32c8d"],
+Cell[CellGroupData[{
+Cell[19057, 552, 247, 4, 29, "Input",ExpressionUUID->"d08c03f2-71a4-45d9-a00c-d3d5aaa3a6c1"],
+Cell[19307, 558, 36555, 679, 376, "Output",ExpressionUUID->"dd3a672a-a69c-4b63-85b5-7f4d5c0519c3"]
+}, Open  ]]
+}
+]
+*)
+
