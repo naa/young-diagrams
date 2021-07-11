@@ -9,11 +9,11 @@ double logstirling(long n) {
   return lgamma(n+1);
 }
 
-double logbnmultiplicity(int *a, int n, int N) {
+double logcnmultiplicity(int *a, int n, int N) {
   int i,j;
   double res=0;
   for (i=0;i<n;i++) {
-    res+=logstirling(N+2*i)-2.0*i*log(2)-logstirling((N+a[i]+2*n-1)/2)-logstirling((N-a[i]+2*n-1)/2)+log(a[i]);
+    res+=logstirling(2*N-1+2*i)-logstirling(N+a[i]+n)-logstirling(N-a[i]+n-1)+log(2*a[i]);
     for (j=0;j<i;j++) {
       res+=log(a[i]*a[i]-a[j]*a[j]);
     }
@@ -21,13 +21,13 @@ double logbnmultiplicity(int *a, int n, int N) {
   return res;
 }
 
-double logbndimension(int *a,int n){
+double logcndimension(int *a,int n){
   int i,j;
-  double res=(-n*n+2*n)*log(2)+logstirling(n);
+  double res=0;
   for (i=0;i<n;i++) {
-    res+=log(a[i])-logstirling(2*n-2*i);
+    res+=log(2*a[i]);
     for (j=0;j<i;j++) {
-      res+=log(a[i]*a[i]-a[j]*a[j]);
+      res+=log(a[i]*a[i]-a[j]*a[j])-log(i-j)-log(2*n-i-j);
     }
   }
   return res;
@@ -35,12 +35,12 @@ double logbndimension(int *a,int n){
 int *maxa;
 double maxlogmeasure=-10000;
 
-double logthetameasure(int *a, int k, int N, double theta) {
-  return -theta+k*log(theta)-logstirling(k)+logbnmultiplicity(a,k,N)+logbndimension(a,k);
-}
+//double logthetameasure(int *a, int k, int N, double theta) {
+//  return -theta+k*log(theta)-logstirling(k)+logbnmultiplicity(a,k,N)+logbndimension(a,k);
+//}
 
 double logmun(int* a, int n, int N) {
-  double res=logbnmultiplicity(a,n,N)+logbndimension(a,n)-n*N*log(2);
+  double res=logcnmultiplicity(a,n,N)+logcndimension(a,n)-2*n*N*log(2);
   return res; 
 }
 
@@ -48,7 +48,7 @@ void findmax(int n, int N) {
   long i,j;
   int *a=(int *)malloc(n * sizeof(int));
   for (i=0;i<n;i++) {
-    a[i]=2*i+1+N%2;
+    a[i]=i+1;
   }
   double logp;
   double newlogp;
@@ -57,19 +57,19 @@ void findmax(int n, int N) {
     cont=0;
     for (i=0;i<n;i++) {
       logp=logmun(a,n,N);
-      a[i]+=2;
+      a[i]+=1;
       newlogp=logmun(a,n,N);
       while(newlogp>logp) {
 	cont=1;
 	logp=newlogp;
-	a[i]+=2;
+	a[i]+=1;
 	newlogp=logmun(a,n,N);
       }
-      a[i]-=2;
+      a[i]-=1;
     }
   }
   for (i=n-1;i>=0;i--) {
-    printf("%ld ",a[i]-(2*i+1));
+    printf("%d ",a[i]-i-1);
   }
 }
   

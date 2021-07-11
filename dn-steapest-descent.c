@@ -12,8 +12,9 @@ double logstirling(long n) {
 double logbnmultiplicity(int *a, int n, int N) {
   int i,j;
   double res=0;
+  res=-(n*(n-1))*log(2);
   for (i=0;i<n;i++) {
-    res+=logstirling(N+2*i)-2.0*i*log(2)-logstirling((N+a[i]+2*n-1)/2)-logstirling((N-a[i]+2*n-1)/2)+log(a[i]);
+    res+=logstirling(N+2*i)-logstirling((N+a[i]+2*n-2)/2)-logstirling((N-a[i]+2*n-2)/2);
     for (j=0;j<i;j++) {
       res+=log(a[i]*a[i]-a[j]*a[j]);
     }
@@ -23,11 +24,10 @@ double logbnmultiplicity(int *a, int n, int N) {
 
 double logbndimension(int *a,int n){
   int i,j;
-  double res=(-n*n+2*n)*log(2)+logstirling(n);
+  double res=-(n*(n+1))*log(2);
   for (i=0;i<n;i++) {
-    res+=log(a[i])-logstirling(2*n-2*i);
     for (j=0;j<i;j++) {
-      res+=log(a[i]*a[i]-a[j]*a[j]);
+      res+=log(a[i]*a[i]-a[j]*a[j])-log(i-j)-log(2*n-2-i-j);
     }
   }
   return res;
@@ -48,7 +48,7 @@ void findmax(int n, int N) {
   long i,j;
   int *a=(int *)malloc(n * sizeof(int));
   for (i=0;i<n;i++) {
-    a[i]=2*i+1+N%2;
+    a[i]=2*i;
   }
   double logp;
   double newlogp;
@@ -69,7 +69,7 @@ void findmax(int n, int N) {
     }
   }
   for (i=n-1;i>=0;i--) {
-    printf("%ld ",a[i]-(2*i+1));
+    printf("%ld, ",a[i]-2*i);
   }
 }
   
